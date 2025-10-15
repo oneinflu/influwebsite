@@ -1,0 +1,118 @@
+/* Footer.module.css */
+.footer {
+  position: relative;
+  width: 100vw;
+  background: url(/bg-lines.svg) no-repeat, radial-gradient(144.07% 81.04% at 92.96% 100%, rgba(89, 16, 166, 0.8) 0%, rgba(160, 73, 252, 0.8) 50%, rgba(30, 0, 29, 0.8) 100%), rgb(31, 31, 31);
+  color: #fff;
+  padding: 80px 24px 40px;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 40px;
+}
+
+.column {
+  flex: 1;
+  min-width: 200px;
+}
+
+.column h3 {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 24px;
+  color: #fff;
+}
+
+.column ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.column li {
+  margin-bottom: 12px;
+}
+
+.column a {
+  color: rgba(255, 255, 255, 0.8);
+  text-decoration: none;
+  font-size: 16px;
+  transition: color 0.2s ease;
+}
+
+.column a:hover {
+  color: #fff;
+}
+
+.logoSection {
+  margin-bottom: 24px;
+}
+
+.logo {
+  height: 40px;
+  margin-bottom: 16px;
+}
+
+.description {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 14px;
+  line-height: 1.5;
+  margin-bottom: 24px;
+  max-width: 300px;
+}
+
+.socialLinks {
+  display: flex;
+  gap: 16px;
+}
+
+.socialLinks a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+  transition: background 0.2s ease;
+}
+
+.socialLinks a:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.socialLinks img {
+  width: 16px;
+  height: 16px;
+}
+
+.copyright {
+  text-align: center;
+  margin-top: 60px;
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 14px;
+}
+
+.hashfame {
+  margin-top: 60px;
+  width: 100%;
+ 
+  padding: 0;
+  position: relative;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.hashfame img {
+  width: 100%;
+  height: auto;
+  display: block;
+  margin: 0;
+  padding: 0;
+}
