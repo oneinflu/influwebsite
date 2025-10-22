@@ -22,10 +22,6 @@ const Header = () => {
           <img src="/logo.svg" alt="Logo" className={styles.logoImage} />
         </div>
         <div className={styles.navItems}>
-          <a href="#" className={styles.navLink}>✨ For Creators</a>
-          <a href="#" className={styles.navLink}>🔴 For Agencies</a>
-            <a href="#" className={styles.navLink}>🔴 For Business</a>
-         
           <button className={styles.getStarted}>Get Started</button>
         </div>
       </header>

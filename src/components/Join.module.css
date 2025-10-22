@@ -1,4 +1,27 @@
-.joinSection {
+@media (max-width: 640px) {
+  .joinTitle {
+    max-width: 280px;
+    margin: 0px auto 2px;
+    font-size: 20px !important;
+    letter-spacing: -0.06px;
+    margin-bottom: 5px !important;
+  }
+  
+  .joinText {
+    max-width: 300px;
+    font-size: 14px !important;
+    line-height: normal;
+    letter-spacing: -0.03px;
+    margin-bottom: 10px !important;
+  }
+  
+  .joinButton {
+    font-size: 12px;
+    font-weight: 600;
+    line-height: normal;
+    height: 36px;
+  }
+}.joinSection {
   display: flex;
   flex-direction: column;
   align-items: center;

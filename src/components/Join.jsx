@@ -3,9 +3,7 @@ import styles from './Join.module.css';
 const Join = () => {
   return (
     <div className={styles.joinSection}>
-      <div className={styles.brandLogosWrapper}>
-        <img src="/brandLogos.webp" alt="Partner Brands" className={styles.brandLogosImage} />
-      </div>
+      
       
       <h2 className={styles.joinTitle}>
        Influencer, Entrepreneur or Partner? You Belong Here.

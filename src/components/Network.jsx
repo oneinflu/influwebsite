@@ -13,11 +13,11 @@ const Network = () => {
         <div className={styles.features}>
           <div className={styles.brandCard}>
             <div className={styles.logoWrapper}>
-              <img src="/logo.svg" alt="HashFame" className={styles.brandLogo} />
+              <img src="/logo.svg" alt="HashFame" className={styles.brandLogo} style={{marginBottom: "12px"}}/>
             </div>
             <p className={styles.openFor}>Trusted by</p>
             <h3 className={styles.brandTitle}>
-              Brands and<br />
+              Brands and 
               Agencies
             </h3>
           </div>
@@ -34,7 +34,7 @@ const Network = () => {
               </p>
             </div>
             <div className={styles.mockupWrapper}>
-              <img src="/verifiedInfluencers.webp" alt="Verified Influencers Interface" className={styles.mockupImage} />
+              <img src="/verifiedInfluencers.png" alt="Verified Influencers Interface" className={styles.mockupImage} />
             </div>
           </div>
            
@@ -52,19 +52,22 @@ const Network = () => {
               </p>
             </div>
             <div className={styles.mockupWrapper}>
-              <img src="/verifiedCreators.webp" alt="Verified Influencers Interface" className={styles.mockupImagetwo} />
+              <img src="/verifiedCreators.png" alt="Verified Influencers Interface" className={styles.mockupImagetwo} />
             </div>
           </div>
-           <div className={styles.brandCard}>
+           <div className={styles.indiaBackground}>
+              <div className={styles.overlay}></div>
+              <div className={styles.cardContent}>
+                <h3 className={styles.brandTitle} style={{color: "#ffffff"}}>
+                  Powering Bharat&apos;s New Workforce.
+                </h3>
+                <p className={styles.brandDescription} style={{color: "rgba(255, 255, 255, 0.9)"}}>
+                  Connecting creators across India with brands that value their authentic voice and reach.
+                </p>
+              </div>
+            </div>
             
           
-            <h3 className={styles.brandTitle}>
-              Home to the Best of Digital Talent
-            </h3>
-            <div className={styles.logoWrapper}>
-              <img src="/agenciesImage.webp" alt="HashFame" className={styles.agencyLogosImage} />
-            </div>
-          </div>
         </div>
       </div>
     </section>

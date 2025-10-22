@@ -26,16 +26,21 @@
 /* Update responsive styles */
 @media (max-width: 768px) {
   .hero {
-    padding: 80px 16px 120px;
-    background-size: 90%;
+    padding: 44px 16px 40px;
+    background-size: 80%;
   }
 }
 
 @media (max-width: 640px) {
   .hero {
-    padding: 60px 16px 100px;
-    background-size: 100%;
-    gap: 32px;
+    padding: 44px 16px 100px;
+    gap: 26px;
+    width: auto;
+    background-image: url(/vector1.svg);
+    background-repeat: no-repeat;
+    background-position: center top;
+    background-size: 74%;
+    margin-top: 60px;
   }
 }
 
@@ -46,8 +51,8 @@
   line-height: normal;
   letter-spacing: -0.03px;
   color: rgb(16, 16, 16);
-  margin-bottom: 24px;
- 
+  margin-bottom: 12px;
+ text-align: center;
   margin-left: auto;
   margin-right: auto;
 }
@@ -72,8 +77,10 @@
 
 @media (max-width: 640px) {
   .title, .highlight {
-    font-size: 32px;
-    max-width: 100%;
+    font-size: 20px !important;
+    max-width: 240px;
+    text-align: center;
+    letter-spacing: -0.06px;
   }
 }
 
@@ -91,10 +98,11 @@
 /* Update responsive styles for subtitle */
 @media (max-width: 640px) {
   .subtitle {
-    font-size: 14px;
-    line-height: 22px;
+    font-size: 12px;
+    letter-spacing: -0.03px;
     max-width: 100%;
-    padding: 0 16px;
+    line-height: 16px;
+    padding: 0;
   }
 }
 
@@ -243,7 +251,7 @@
   .subtitle {
     font-size: 16px;
     max-width: 500px;
-    margin-bottom: 32px;
+  
   }
   
   .storeButton {
@@ -277,13 +285,13 @@
   }
   
   .appStores {
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
-    gap: 12px;
+    gap: 5px;
   }
   
   .storeButton {
-    height: 40px;
+    height: 28px;
   }
   
   .countNumber {
@@ -345,7 +353,8 @@
   }
   
   .bannerImage {
-    max-width: 100%;
+    max-width: 84%;
+    min-height: 100%;
   }
 }
 

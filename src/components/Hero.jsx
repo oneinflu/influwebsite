@@ -26,33 +26,19 @@ const Hero = () => {
   return (
     <div className={styles.hero}>
       <div className={styles.container}>
-        <h1 className={styles.title}>Connect. Collaborate. <span className={styles.highlight}>Earn Instantly</span></h1>
+        <h1 className={styles.title}>Connect. Collaborate.<span className={styles.highlight}> <br></br> Earn Instantly</span></h1>
         <p className={styles.subtitle}>
          Where influencers, brands & services unite to collaborate, grow audiences, and unlock endless earning potential.
         </p>
         <div className={styles.appStores}>
-          <img src="/playStoreImage.svg" alt="Get it on Google Play" className={styles.storeButton} />
-          <img src="/appleImage.svg" alt="Download on the App Store" className={styles.storeButton} />
+          <img src="/playStoreImage.webp" alt="Get it on Google Play" className={styles.storeButton} />
+          <img src="/appleImage.jpeg" alt="Download on the App Store" className={styles.storeButton} />
         </div>
         <div className={styles.bannerContainer}>
-          <img src="/bannerImage.webp" alt="App Interface" className={styles.bannerImage} />
+          <img src="/bannerImage.png" alt="App Interface" className={styles.bannerImage} />
         </div>
-        <div className={styles.creatorStats}>
-          <div className={styles.creatorCount}>83,000+</div>
-          <div className={styles.creatorLabel}>Users</div>
-        </div>
-        <div className={styles.creatorsImage}>
-          <div className={styles.scrollTrack}>
-            {[...avatars, ...avatars].map((avatar, index) => (
-              <img 
-                key={index} 
-                src={avatar} 
-                alt="creator" 
-                loading="lazy"
-              />
-            ))}
-          </div>
-        </div>
+       
+      
       </div>
     </div>
   );
