@@ -11,7 +11,7 @@ const Network = () => {
         <p className={styles.subtitle}>One Login, Endless Opportunities.</p>
 
         <div className={styles.features}>
-          <div className={styles.brandCard}>
+          <div className={styles.brandCardTwo}>
             <div className={styles.logoWrapper}>
               <img src="/dark.svg" alt="HashFame" className={styles.brandLogo} style={{marginBottom: "12px"}}/>
             </div>

@@ -108,6 +108,16 @@
   align-items: flex-start;
   height: 100%;
 }
+.brandCardTwo {
+  background: #FFFFFF;
+  border-radius: 24px;
+  padding: 32px;
+  box-shadow: 0px 4px 24px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  height: 100%;
+}
 
 .hireCard {
   background: #F8F0FF;
@@ -190,6 +200,9 @@
   .brandCard, 
   .hireCard {
     padding: 24px 24px 0px !important;
+  }
+  .brandCardTwo{
+    padding: 24px !important;
   }
   .mockupWrapper {
     margin-top: 0px !important;
