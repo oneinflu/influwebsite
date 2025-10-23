@@ -20,10 +20,11 @@
   width: 100%;
   max-width: 1200px;
   margin: 0 auto;
-  background-color: #ffffff;
+  background-color: #1A1A1A;
   transition: all 0.3s ease;
   border-radius: 12px;
   box-sizing: border-box;
+ 
 }
 
 .scrolled .header {

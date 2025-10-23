@@ -50,15 +50,15 @@
   font-weight: 600;
   line-height: normal;
   letter-spacing: -0.03px;
-  color: rgb(16, 16, 16);
+  color: #FFFFFF;
   margin-bottom: 12px;
- text-align: center;
+  text-align: center;
   margin-left: auto;
   margin-right: auto;
 }
 
 .highlight {
-  background: linear-gradient(95deg, rgb(82, 20, 148) 30.88%, rgb(156, 84, 232) 85.2%, rgb(82, 20, 148) 97.92%);
+  background: linear-gradient(95deg, rgb(82, 20, 148) -3.86%, rgb(156, 84, 232) 26.75%, rgb(82, 20, 148) 97.92%);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -85,7 +85,7 @@
 }
 
 .subtitle {
-  color: rgba(16, 16, 16, 0.8);
+  color: #FFFFFF;
   font-size: 16px;
   font-weight: 400;
   line-height: 24px;

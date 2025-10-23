@@ -40,8 +40,8 @@
   }
 }.contact {
   width: 100%;
-  padding: 80px 24px;
-  background: #FFFFFF;
+  padding: 80px 24px 0px;
+  background: #1A1A1A;
 }
 
 .container {
@@ -74,7 +74,7 @@
 }
 
 .title {
-  color: rgba(16, 16, 16, 0.8);
+  color: #FFFFFF;
   font-family: "DM Sans";
   font-size: 28px;
   font-style: normal;

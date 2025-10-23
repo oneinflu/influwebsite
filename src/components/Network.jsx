@@ -13,7 +13,7 @@ const Network = () => {
         <div className={styles.features}>
           <div className={styles.brandCard}>
             <div className={styles.logoWrapper}>
-              <img src="/logo.svg" alt="HashFame" className={styles.brandLogo} style={{marginBottom: "12px"}}/>
+              <img src="/dark.svg" alt="HashFame" className={styles.brandLogo} style={{marginBottom: "12px"}}/>
             </div>
             <p className={styles.openFor}>Trusted by</p>
             <h3 className={styles.brandTitle}>
