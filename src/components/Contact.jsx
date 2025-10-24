@@ -22,7 +22,7 @@ const Contact = () => {
           </div>
         </div>
         <div className={styles.rightSection}>
-          <img src="/contactImg.png" alt="App Interface" className={styles.appImage} />
+          <img src="/contactImg.avif" alt="App Interface" className={styles.appImage} />
         </div>
       </div>
     </section>

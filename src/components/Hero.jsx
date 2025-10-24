@@ -238,7 +238,7 @@ const Hero = () => {
           <img src="/appleImage.jpeg" alt="Download on the App Store" className={styles.storeButton} />
         </div>
         <div className={styles.bannerContainer}>
-          <img src="/bannerImage.png" alt="App Interface" className={styles.bannerImage} />
+          <img src="/bannerImage.avif" alt="App Interface" className={styles.bannerImage} />
         </div>
       </div>
     </div>
