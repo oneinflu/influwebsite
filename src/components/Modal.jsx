@@ -1,5 +1,6 @@
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import styles from './Modal.module.css';
+import ReactConfetti from 'react-confetti';
 
 const Modal = ({ isOpen, onClose }) => {
   const [formData, setFormData] = useState({
@@ -9,6 +10,23 @@ const Modal = ({ isOpen, onClose }) => {
     phone: '',
     socialHandle: ''
   });
+  
+  const [showThankYou, setShowThankYou] = useState(false);
+  const thankYouContainerRef = useRef(null);
+  const [confettiDimensions, setConfettiDimensions] = useState({
+    width: 0,
+    height: 0,
+  });
+
+  useEffect(() => {
+    if (showThankYou && thankYouContainerRef.current) {
+      const { width, height } = thankYouContainerRef.current.getBoundingClientRect();
+      setConfettiDimensions({
+        width,
+        height,
+      });
+    }
+  }, [showThankYou]);
 
   const categoryOptions = [
     { id: 'influencer', label: 'Influencer' },
@@ -44,7 +62,20 @@ const Modal = ({ isOpen, onClose }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log('Form submitted:', formData);
-    onClose();
+    setShowThankYou(true);
+    
+    // Reset form after 5 seconds and close modal
+    setTimeout(() => {
+      setShowThankYou(false);
+      setFormData({
+        categories: [],
+        name: '',
+        email: '',
+        phone: '',
+        socialHandle: ''
+      });
+      onClose();
+    }, 5000);
   };
 
   if (!isOpen) return null;
@@ -52,83 +83,112 @@ const Modal = ({ isOpen, onClose }) => {
   return (
     <div className={styles.modalOverlay} onClick={onClose}>
       <div className={styles.modalContent} onClick={e => e.stopPropagation()}>
-        <button className={styles.closeButton} onClick={onClose}>×</button>
-        
-        <h2 className={styles.modalTitle}>Get Started</h2>
-        <p className={styles.modalSubtitle}>Join the INFLU network today</p>
-        
-        <form onSubmit={handleSubmit}>
-          <div className={styles.formSection}>
-            <label className={styles.sectionLabel}>I am a:</label>
-            <div className={styles.categoryOptions}>
-              {categoryOptions.map(category => (
-                <div 
-                  key={category.id}
-                  className={`${styles.categoryOption} ${formData.categories.includes(category.id) ? styles.selected : ''}`}
-                  onClick={() => handleCategoryToggle(category.id)}
-                >
-                  {category.label}
+        {showThankYou ? (
+          <div className={styles.thankYouContainer} ref={thankYouContainerRef}>
+            <div className={styles.confettiContainer}>
+              <ReactConfetti
+                width={confettiDimensions.width}
+                height={confettiDimensions.height}
+                recycle={false}
+                numberOfPieces={200}
+                gravity={0.2}
+                confettiSource={{
+                  x: confettiDimensions.width / 2,
+                  y: 0,
+                  w: 0,
+                  h: 0
+                }}
+              />
+            </div>
+            <div className={styles.checkmarkContainer}>
+              <div className={styles.checkmark}>✓</div>
+            </div>
+            <h2 className={styles.thankYouTitle}>Thank You!</h2>
+            <p className={styles.thankYouText}>
+              Thank you for joining exclusive INFLU network. We'll inform you once our app is live!
+            </p>
+          </div>
+        ) : (
+          <>
+            <button className={styles.closeButton} onClick={onClose}>×</button>
+            
+            <h2 className={styles.modalTitle}>Get Started</h2>
+            <p className={styles.modalSubtitle}>Join the INFLU network today</p>
+            
+            <form onSubmit={handleSubmit}>
+              <div className={styles.formSection}>
+                <label className={styles.sectionLabel}>I am a:</label>
+                <div className={styles.categoryOptions}>
+                  {categoryOptions.map(category => (
+                    <div 
+                      key={category.id}
+                      className={`${styles.categoryOption} ${formData.categories.includes(category.id) ? styles.selected : ''}`}
+                      onClick={() => handleCategoryToggle(category.id)}
+                    >
+                      {category.label}
+                    </div>
+                  ))}
                 </div>
-              ))}
-            </div>
-          </div>
-          
-          <div className={styles.formSection}>
-            <div className={styles.inputGroup}>
-              <label htmlFor="name">Full Name</label>
-              <input 
-                type="text" 
-                id="name" 
-                name="name" 
-                value={formData.name} 
-                onChange={handleInputChange} 
-                placeholder="Your name"
-                required
-              />
-            </div>
-            
-            <div className={styles.inputGroup}>
-              <label htmlFor="email">Email</label>
-              <input 
-                type="email" 
-                id="email" 
-                name="email" 
-                value={formData.email} 
-                onChange={handleInputChange} 
-                placeholder="your.email@example.com"
-                required
-              />
-            </div>
-            
-            <div className={styles.inputGroup}>
-              <label htmlFor="phone">Phone Number</label>
-              <input 
-                type="tel" 
-                id="phone" 
-                name="phone" 
-                value={formData.phone} 
-                onChange={handleInputChange} 
-                placeholder="+91 9999999999"
-              />
-            </div>
-            
-            <div className={styles.inputGroup}>
-              <label htmlFor="socialHandle">Instagram Handle</label>
-              <input 
-                type="text" 
-                id="socialHandle" 
-                name="socialHandle" 
-                value={formData.socialHandle} 
-                onChange={handleInputChange} 
-                placeholder="@yourusername"
-              />
-            </div>
-          </div>
-          
-          <button type="submit" className={styles.submitButton}>
-            Join INFLU Network
-          </button>
-        </form>
+              </div>
+              
+              <div className={styles.formSection}>
+                <div className={styles.inputGroup}>
+                  <label htmlFor="name">Full Name</label>
+                  <input 
+                    type="text" 
+                    id="name" 
+                    name="name" 
+                    value={formData.name} 
+                    onChange={handleInputChange} 
+                    placeholder="Your name"
+                    required
+                  />
+                </div>
+                
+                <div className={styles.inputGroup}>
+                  <label htmlFor="email">Email</label>
+                  <input 
+                    type="email" 
+                    id="email" 
+                    name="email" 
+                    value={formData.email} 
+                    onChange={handleInputChange} 
+                    placeholder="your.email@example.com"
+                    required
+                  />
+                </div>
+                
+                <div className={styles.inputGroup}>
+                  <label htmlFor="phone">Phone Number</label>
+                  <input 
+                    type="tel" 
+                    id="phone" 
+                    name="phone" 
+                    value={formData.phone} 
+                    onChange={handleInputChange} 
+                    placeholder="+91 9999999999"
+                  />
+                </div>
+                
+                <div className={styles.inputGroup}>
+                  <label htmlFor="socialHandle">Social Media Handle</label>
+                  <input 
+                    type="text" 
+                    id="socialHandle" 
+                    name="socialHandle" 
+                    value={formData.socialHandle} 
+                    onChange={handleInputChange} 
+                    placeholder="@yourusername"
+                  />
+                </div>
+              </div>
+              
+              <button type="submit" className={styles.submitButton}>
+                Join INFLU Network
+              </button>
+            </form>
+          </>
+        )}
       </div>
     </div>
   );
