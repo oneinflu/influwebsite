@@ -28,7 +28,7 @@ const Footer = () => {
         <div className={styles.middleSection}>
           <div className={styles.footerColumn}>
             <h3>Contact us:</h3>
-            <p>hello@influ.one | +91 9663635025</p>
+            <p>hello@oneinflu.com</p>
           </div>
           
           <div className={styles.footerColumn}>
