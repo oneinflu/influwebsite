@@ -2,6 +2,8 @@ import { useState, useEffect, useRef } from 'react';
 import styles from './Modal.module.css';
 import ReactConfetti from 'react-confetti';
 
+const API_URL = 'http://localhost:5001/api';
+
 const Modal = ({ isOpen, onClose }) => {
   const [formData, setFormData] = useState({
     categories: [],
@@ -12,6 +14,8 @@ const Modal = ({ isOpen, onClose }) => {
   });
   
   const [showThankYou, setShowThankYou] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [error, setError] = useState(null);
   const thankYouContainerRef = useRef(null);
   const [confettiDimensions, setConfettiDimensions] = useState({
     width: 0,
@@ -59,23 +63,58 @@ const Modal = ({ isOpen, onClose }) => {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log('Form submitted:', formData);
-    setShowThankYou(true);
     
-    // Reset form after 5 seconds and close modal
-    setTimeout(() => {
-      setShowThankYou(false);
-      setFormData({
-        categories: [],
-        name: '',
-        email: '',
-        phone: '',
-        socialHandle: ''
+    // Validate form
+    if (formData.categories.length === 0) {
+      setError('Please select at least one category');
+      return;
+    }
+    
+    setIsSubmitting(true);
+    setError(null);
+    
+    try {
+      // Send data to API
+      const response = await fetch(`${API_URL}/users/register`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
       });
-      onClose();
-    }, 5000);
+      
+      const data = await response.json();
+      
+      if (!response.ok) {
+        throw new Error(data.message || 'Something went wrong');
+      }
+      
+      console.log('Form submitted successfully:', data);
+      
+      // Show thank you message
+      setShowThankYou(true);
+      
+      // Reset form after 5 seconds and close modal
+      setTimeout(() => {
+        setShowThankYou(false);
+        setFormData({
+          categories: [],
+          name: '',
+          email: '',
+          phone: '',
+          socialHandle: ''
+        });
+        onClose();
+      }, 5000);
+      
+    } catch (error) {
+      console.error('Error submitting form:', error);
+      setError(error.message);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   if (!isOpen) return null;
@@ -114,6 +153,8 @@ const Modal = ({ isOpen, onClose }) => {
             
             <h2 className={styles.modalTitle}>Get Started</h2>
             <p className={styles.modalSubtitle}>Join the INFLU network today</p>
+            
+            {error && <div className={styles.errorMessage}>{error}</div>}
             
             <form onSubmit={handleSubmit}>
               <div className={styles.formSection}>
@@ -166,25 +207,35 @@ const Modal = ({ isOpen, onClose }) => {
                     name="phone" 
                     value={formData.phone} 
                     onChange={handleInputChange} 
-                    placeholder="+91 9999999999"
+                    placeholder="9999999999"
+                    pattern="[0-9]{10}"
+                    maxLength="10"
+                    title="Please enter a valid 10-digit Indian phone number"
                   />
                 </div>
                 
                 <div className={styles.inputGroup}>
                   <label htmlFor="socialHandle">Social Media Handle</label>
-                  <input 
-                    type="text" 
-                    id="socialHandle" 
-                    name="socialHandle" 
-                    value={formData.socialHandle} 
-                    onChange={handleInputChange} 
-                    placeholder="@yourusername"
-                  />
+                  <div className={styles.socialInputWrapper}>
+                    <span className={styles.socialPrefix}>@</span>
+                    <input 
+                      type="text" 
+                      id="socialHandle" 
+                      name="socialHandle" 
+                      value={formData.socialHandle} 
+                      onChange={handleInputChange} 
+                      placeholder="yourusername"
+                    />
+                  </div>
                 </div>
               </div>
               
-              <button type="submit" className={styles.submitButton}>
-                Join INFLU Network
+              <button 
+                type="submit" 
+                className={styles.submitButton}
+                disabled={isSubmitting}
+              >
+                {isSubmitting ? 'Submitting...' : 'Join INFLU Network'}
               </button>
             </form>
           </>
