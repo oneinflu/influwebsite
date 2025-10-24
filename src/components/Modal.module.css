@@ -158,14 +158,14 @@
 
 .socialPrefix {
   position: absolute;
-  left: 12px;
+  left: 16px;
   color: rgba(255, 255, 255, 0.6);
   font-size: 16px;
   pointer-events: none;
 }
 
 .socialInputWrapper input {
-  padding-left: 28px;
+  padding-left: 36px;
 }
 
 .submitButton {
