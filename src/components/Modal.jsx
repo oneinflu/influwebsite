@@ -36,7 +36,8 @@ const Modal = ({ isOpen, onClose }) => {
     { id: 'influencer', label: 'Influencer' },
     { id: 'agency', label: 'Agency' },
     { id: 'model', label: 'Model' },
-    { id: 'manager', label: 'Influencer Manager' }
+    { id: 'manager', label: 'Influencer Manager' },
+    { id: 'business', label: 'Business' }
   ];
 
   const handleCategoryToggle = (categoryId) => {
