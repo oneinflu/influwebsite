@@ -1,0 +1,137 @@
+import { useState } from 'react';
+import styles from './Modal.module.css';
+
+const Modal = ({ isOpen, onClose }) => {
+  const [formData, setFormData] = useState({
+    categories: [],
+    name: '',
+    email: '',
+    phone: '',
+    socialHandle: ''
+  });
+
+  const categoryOptions = [
+    { id: 'influencer', label: 'Influencer' },
+    { id: 'agency', label: 'Agency' },
+    { id: 'model', label: 'Model' },
+    { id: 'manager', label: 'Influencer Manager' }
+  ];
+
+  const handleCategoryToggle = (categoryId) => {
+    setFormData(prev => {
+      if (prev.categories.includes(categoryId)) {
+        return {
+          ...prev,
+          categories: prev.categories.filter(id => id !== categoryId)
+        };
+      } else {
+        return {
+          ...prev,
+          categories: [...prev.categories, categoryId]
+        };
+      }
+    });
+  };
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }));
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log('Form submitted:', formData);
+    onClose();
+  };
+
+  if (!isOpen) return null;
+
+  return (
+    <div className={styles.modalOverlay} onClick={onClose}>
+      <div className={styles.modalContent} onClick={e => e.stopPropagation()}>
+        <button className={styles.closeButton} onClick={onClose}>×</button>
+        
+        <h2 className={styles.modalTitle}>Get Started</h2>
+        <p className={styles.modalSubtitle}>Join the INFLU network today</p>
+        
+        <form onSubmit={handleSubmit}>
+          <div className={styles.formSection}>
+            <label className={styles.sectionLabel}>I am a:</label>
+            <div className={styles.categoryOptions}>
+              {categoryOptions.map(category => (
+                <div 
+                  key={category.id}
+                  className={`${styles.categoryOption} ${formData.categories.includes(category.id) ? styles.selected : ''}`}
+                  onClick={() => handleCategoryToggle(category.id)}
+                >
+                  {category.label}
+                </div>
+              ))}
+            </div>
+          </div>
+          
+          <div className={styles.formSection}>
+            <div className={styles.inputGroup}>
+              <label htmlFor="name">Full Name</label>
+              <input 
+                type="text" 
+                id="name" 
+                name="name" 
+                value={formData.name} 
+                onChange={handleInputChange} 
+                placeholder="Your name"
+                required
+              />
+            </div>
+            
+            <div className={styles.inputGroup}>
+              <label htmlFor="email">Email</label>
+              <input 
+                type="email" 
+                id="email" 
+                name="email" 
+                value={formData.email} 
+                onChange={handleInputChange} 
+                placeholder="your.email@example.com"
+                required
+              />
+            </div>
+            
+            <div className={styles.inputGroup}>
+              <label htmlFor="phone">Phone Number</label>
+              <input 
+                type="tel" 
+                id="phone" 
+                name="phone" 
+                value={formData.phone} 
+                onChange={handleInputChange} 
+                placeholder="+91 9999999999"
+              />
+            </div>
+            
+            <div className={styles.inputGroup}>
+              <label htmlFor="socialHandle">Instagram Handle</label>
+              <input 
+                type="text" 
+                id="socialHandle" 
+                name="socialHandle" 
+                value={formData.socialHandle} 
+                onChange={handleInputChange} 
+                placeholder="@yourusername"
+              />
+            </div>
+          </div>
+          
+          <button type="submit" className={styles.submitButton}>
+            Join INFLU Network
+          </button>
+        </form>
+      </div>
+    </div>
+  );
+};
+
+export default Modal;
