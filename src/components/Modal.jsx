@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from 'react';
 import styles from './Modal.module.css';
 import ReactConfetti from 'react-confetti';
 
-const API_URL = 'https://influbackend-anuzy.ondigitalocean.app/api';
+const API_URL = 'https://influ-real-okxvj.ondigitalocean.app/api';
 
 const Modal = ({ isOpen, onClose }) => {
   const [formData, setFormData] = useState({
